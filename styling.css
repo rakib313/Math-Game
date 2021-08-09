@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+    background: radial-gradient(circle, white, gray);
+}
+
+#container {
+    height: 400px;
+    width: 550px;
+    background-color: rgb(197, 245, 245);
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+
+    /* box-shadow: [horizontal offset] [vertical offset]
+     [blur radius] [oprional [spread radius] [color]]]*/
+    box-shadow: 0px 4px 0px 0px #67fcfc;
+    position: relative;
+}
+#score {
+    background-color: rgb(241, 252, 149);
+    color: gray;
+    padding: 10px;
+    position: absolute;
+    left: 500px;
+    padding: 11px;
+    box-shadow: 0px 4px 0px 0px #989e5e;
+}
+#correct {
+    position: absolute;
+    left: 260px;
+    background-color: greenyellow;
+    color: white;
+    padding: 11px;
+    display: none;
+}
+#wrong {
+    position: absolute;
+    left: 260px;
+    background-color: red;
+    color: white;
+    padding: 11px;
+    display: none;
+}
