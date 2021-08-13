@@ -4,10 +4,10 @@ html {
 }
 
 #container {
-    height: 400px;
-    width: 550px;
+    height: 560px;
+    width: 750px;
     background-color: rgb(197, 245, 245);
-    margin: 100px auto;
+    margin: 10px auto;
     padding: 20px;
     border-radius: 10px;
 
@@ -21,7 +21,7 @@ html {
     color: gray;
     padding: 10px;
     position: absolute;
-    left: 500px;
+    left: 700px;
     padding: 11px;
     box-shadow: 0px 4px 0px 0px #989e5e;
 }
@@ -46,9 +46,9 @@ html {
     /* left: 70px; */
     /* top: 70px; */
     margin: 50px auto 10px auto;
-    width: 450px;
-    height: 150px;
-    background-color: rgb(240, 167, 167);
+    width: 650px;
+    height: 400px;
+    background-color: cornsilk;
     box-shadow: 0px 4px 0px 0px indianred;
     font-size: 100px;
     text-align: center;
@@ -109,13 +109,11 @@ html {
     position: relative;
     transition: all 0.2s;
 }
-#timeremaining {
-    width: 152px;
+#trialsLeft {
+    width: 80px;
     padding: 10px;
     position: absolute;
-    top: 395px;
-    left: 400px;
-    background-color: yellowgreen;
+    background-color: rgb(241, 252, 149);
     color: black;
     /* visibility: hidden; */
     display: none;
@@ -129,8 +127,8 @@ html {
     text-align: center;
     text-transform: uppercase;
     position: absolute;
-    top: 120px;
-    left: 45px;
+    top: 170px;
+    left: 150px;
     /* Elements by default has z-index of zero */
     z-index: 2; 
     display: none;
