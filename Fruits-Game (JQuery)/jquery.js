@@ -1,3 +1,5 @@
+let action
+let step;
 let playing = false;
 let score;
 let trialsLeft;
@@ -20,6 +22,8 @@ $(function(){
             $("#trialsLeft").show();
             trialsLeft = 3;
             addHearts();
+            // hide game over boc
+            $("#gameOver").hide()
             // change button text to reset game
             $("#startreset").html("Reset Game");
             // start sending fruits
@@ -31,6 +35,7 @@ $(function(){
 
 // functions 
 function addHearts() {
+    $("#trialsLeft").empty();
     for (let i = 0; i < trialsLeft; i++) {
         $("#trialsLeft").append(" &#10084; ");
     }
@@ -42,6 +47,48 @@ function startAction() {
     $("#fruit1").show();
     chooseFruit(); // choose a randon fruit
     $('#fruit1').css({'left': Math.round(550*Math.random()), 'top': -50});
+    // random position
+
+    //  generate a random step
+    step = 1+Math.round(5*Math.random()); // change step
+
+    // move fruit down vy one step every 10ms
+    action = setInterval(function() {
+        $("#fruit1").css('top', $('#fruit1').position().top + step);
+        
+        // check if fruit is too low
+        if($('#fruit1').position().top > $("#fruitsContainer").height()) {
+            // check if we have trials left
+            if (trialsLeft > 1) {
+                // reduce trials by one
+                trialsLeft--;
+                startAction();
+                //  pipulate trialsLeft box
+                
+                addHearts();
+            } else {
+                // we are not playing anymore
+                playing = false;
+                $("#startreset").html("Start Game");
+                // show game over bannar
+                $('#gameOver').show();
+                // change button to show start game
+                $("#gameOver").html('<p>GameOver!</p><p>Your score is '+ score +'</p>');
+
+                $("#trialsLeft").hide();
+
+                stopAction();
+
+            }
+        }
+    }, 10);
+
+}
+
+function stopAction() {
+    // stop dropping fruits
+    clearInterval(action);
+    $("#fruit1").hide();
 }
 
 // generate a random fruit
