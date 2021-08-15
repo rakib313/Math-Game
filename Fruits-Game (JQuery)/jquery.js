@@ -5,33 +5,50 @@ let score;
 let trialsLeft;
 let fruits = ['GreenApple', 'Lemon', 'Mango', 'Orange', 'Pineapple', 'Tomato'];
 $(function(){
-    // click on start reset button
-    $("#startreset").on("click", function() {
-        // we are playing
-        if (playing == true) {
-            // reload page
-            location.reload();
-        } else {
-            // we are not playing
-            playing = true; // game initiated
-            // set store to 0
-            score = 0;
-            $("#scorevalue").html(score);
 
-            // show triels left
-            $("#trialsLeft").show();
-            trialsLeft = 3;
-            addHearts();
-            // hide game over boc
-            $("#gameOver").hide()
-            // change button text to reset game
-            $("#startreset").html("Reset Game");
-            // start sending fruits
-            startAction();
-        }
-    });
+// click on start reset button
+$("#startreset").on("click", function() {
+    // we are playing
+    if (playing == true) {
+        // reload page
+        location.reload();
+    } else {
+        // we are not playing
+        playing = true; // game initiated
+        // set store to 0
+        score = 0;
+        $("#scorevalue").html(score);
+
+        // show triels left
+        $("#trialsLeft").show();
+        trialsLeft = 3;
+        addHearts();
+        // hide game over boc
+        $("#gameOver").hide()
+        // change button text to reset game
+        $("#startreset").html("Reset Game");
+
+        // start sending fruits
+        startAction();
+    }
+});
+
+$("#fruit1").on("mouseover", function() {
+    // update score
+    score++;
+    $("#scorevalue").html(score);
+    // play sound
+    // document.getElementById("sliceAudio").play();
+    $("#sliceAudio")[0].play();
+    // stop fruit
+    clearInterval(action);
+    // hide it
+    $("#fruit1").hide("explode", 500);
+    // send new fruit
+    setTimeout(startAction, 500);
 
 });
+
 
 // functions 
 function addHearts() {
@@ -50,7 +67,8 @@ function startAction() {
     // random position
 
     //  generate a random step
-    step = 1+Math.round(5*Math.random()); // change step
+    // step = 0;
+    step = 1+Math.round(3*Math.random()); // change step
 
     // move fruit down vy one step every 10ms
     action = setInterval(function() {
@@ -95,3 +113,5 @@ function stopAction() {
 function chooseFruit() {
     $("#fruit1").attr('src', 'images/' + fruits[Math.round(5*Math.random())] + '.png')
 }
+
+});
